@@ -1,0 +1,93 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<div class="movie-list-container">
+    <ul class="movie-list">
+        {% for movie in movies %}
+            <li class="movie-list-item">
+                {% if movie.poster %}
+                    <img src="{{ movie.poster.url }}" alt="{{ movie.title }} Poster" class="movie-image"/>
+                {% else %}
+                    <img src="{% static 'images/default-poster.jpg' %}" alt="Default Poster" class="movie-image"/>
+                {% endif %}
+                <div class="movie-details">
+                    <h3 class="movie-title">{{ movie.title }}</h3>
+                    <a href="{% url 'movie-detail' movie.pk %}" class="details-link">Details</a>
+                </div>
+            </li>
+        {% empty %}
+            <p class="no-movies">No movies found.</p>
+        {% endfor %}
+    </ul>
+</div>
+{% endblock content %}
+
+
+
+{% block extra_css %}
+<style>
+
+.movie-list-container {
+    padding: 20px;
+    display: flex;
+    justify-content: center; /* Center list items horizontally */
+}
+
+.movie-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center items within the list */
+}
+
+.movie-list-item {
+    display: flex;
+    align-items: center;
+    background-color: #2b2525;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 20px;
+    overflow: hidden;
+    padding: 10px;
+    width: 100%; /* Adjust or set a specific width as needed */
+    max-width: 600px; /* Ensure the list items don't stretch too wide */
+}
+
+.movie-image {
+    width: 150px;
+    height: auto;
+    margin-right: 15px;
+}
+
+.movie-details {
+    flex: 1;
+}
+
+.movie-title {
+    font-size: 1.1rem;
+    margin: 0;
+}
+
+.details-link {
+    text-decoration: none;
+    color: #007BFF;
+    font-size: 1rem;
+    display: block;
+    margin-top: 5px;
+    transition: color 0.3s ease;
+}
+
+.details-link:hover {
+    color: #0056b3;
+}
+
+.no-movies {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+
+</style>
+{% endblock extra_css %}

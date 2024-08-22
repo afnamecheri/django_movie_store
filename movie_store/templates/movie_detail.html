@@ -1,0 +1,93 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ movie.title }} - Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: #fff;
+            padding: 40px; /* Increased padding for more space */
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 30px; /* Increased space below the title */
+        }
+        p {
+            color: #555;
+            line-height: 1.6;
+        }
+        .movie-details {
+            margin-bottom: 30px; /* Increased space below the details section */
+        }
+        .movie-details dl {
+            margin: 0;
+            padding: 0;
+        }
+        .movie-details dt {
+            font-weight: bold;
+            margin-top: 15px; /* Increased space above each label */
+        }
+        .movie-details dd {
+            margin-left: 0;
+            margin-bottom: 15px; /* Increased space below each detail */
+        }
+        .back-link {
+            display: inline-block;
+            margin-top: 30px; /* Increased space above the link */
+            padding: 15px 30px; /* Increased padding for the link */
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 16px; /* Increased font size */
+        }
+        .back-link:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>{{ movie.title }}</h1>
+        <div class="movie-poster">
+            {% if movie.poster %}
+                <img src="{{ movie.poster.url }}" alt="{{ movie.title }} Poster">
+            {% else %}
+                <p>No poster available.</p>
+            {% endif %}
+        </div>
+        <div class="movie-details">
+            <dl>
+                <dt>Description:</dt>
+                <dd>{{ movie.description }}</dd>
+
+                <dt>Release Date:</dt>
+                <dd>{{ movie.release_date }}</dd>
+
+                <dt>Genres:</dt>
+                <dd>{% for genre in movie.genres.all %}{{ genre.name }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>
+
+                <dt>Director:</dt>
+                <dd>{{ movie.director.first_name }} {{ movie.director.last_name }}</dd>
+
+                <dt>Actors:</dt>
+                <dd>{% for actor in movie.actors.all %}{{ actor.first_name }} {{ actor.last_name }}{% if not forloop.last %}, {% endif %}{% endfor %}</dd>
+            </dl>
+        </div>
+        <a href="{% url 'movie-list' %}" class="back-link">Back to Movie List</a>
+    </div>
+</body>
+</html>

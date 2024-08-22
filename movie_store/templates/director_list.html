@@ -1,0 +1,64 @@
+{% extends 'main.html' %}
+{% block content %}
+<div class="director-list-container">
+    <h1 class="director-list-title">Directors</h1>
+    <ul class="director-list">
+        {% for director in directors %}
+            <li class="director-item">
+                <a href="{% url 'movies-by-director' director_id=director.id %}" class="director-link">
+                    {{ director.first_name }} {{ director.last_name }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+</div>
+
+{% endblock content %}
+
+{% block extra_css %}
+<style>
+    .director-list-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        margin: 0 auto;
+        max-width: 600px;
+    }
+
+    .director-list-title {
+        font-size: 3rem;
+        margin-bottom: 20px;
+        color: #e6e3e3;
+    }
+
+    .director-list {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        width: 100%;
+    }
+
+    .director-item {
+        margin: 10px 0;
+    }
+
+    .director-link {
+        text-decoration: none;
+        font-size: 2rem;
+        color: #7aade4;
+        padding: 10px;
+        display: block;
+        border-radius: 5px;
+        transition: background-color 0.3s ease, color 0.3s ease;
+    }
+
+    .director-link:hover {
+        background-color: #007BFF;
+        color: #fff;
+    }
+</style>
+{% endblock extra_css %}
+
+

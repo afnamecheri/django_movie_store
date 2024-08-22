@@ -1,0 +1,59 @@
+/* Full-Height Section Styling */
+.vh-100.gradient-custom {
+    background-color: #ffffff; /* Example gradient background */
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Container Styling */
+.container-centered {
+    background-color: #2c2c2c; /* Dark background for the container */
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.5); /* Add some shadow for depth */
+    width: 100%;
+    max-width: 500px; /* Maximum width for responsiveness */
+}
+
+/* Form Input Styling */
+.form-outline .form-control {
+    background-color: transparent;
+    border: 1px solid #ffffff;
+    color: #ffffff;
+}
+
+.form-outline .form-label {
+    color: #ffffff;
+}
+
+/* Button Styling */
+.btn-outline-light {
+    border-color: #ffffff;
+    color:  #2c2c2c;
+}
+
+.btn-outline-light:hover {
+    background-color: #ffffff;
+    color: #2c2c2c;
+}
+
+/* Social Media Icons */
+.text-white i {
+    color: #ffffff;
+    align-items: center;
+}
+
+.text-white i:hover {
+    color: #2575fc;
+}
+
+/* Additional Styling */
+.text-white-50 {
+    color: rgba(255, 255, 255, 0.5) !important;
+}
+
+.text-white-50:hover {
+    color: #ffffff !important;
+}

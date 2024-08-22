@@ -1,0 +1,22 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block content %}
+<body>
+    <div class="container">
+        <h1>{{ genre.name }} Movies</h1>
+        <ul class="movie-list">
+            {% for movie in movies %}
+                <li>
+                    <a href="{% url 'movie-detail' movie.id %}">
+                        <img src="{{ movie.poster.url }}" alt="{{ movie.title }} poster">
+                        <h2>{{ movie.title }}</h2>
+                        <p>{{ movie.release_date }}</p>
+                    </a>
+                </li>
+            {% empty %}
+                <p>No movies found in this genre.</p>
+            {% endfor %}
+        </ul>
+    </div>
+</body>
+{% endblock content %}
